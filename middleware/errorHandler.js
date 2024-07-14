@@ -1,6 +1,17 @@
 const { constants } = require("../constants");
+const joi = require("joi");
+
 const errorHandler = (err, req, res, next) => {
   const statusCode = res.statusCode ? res.statusCode : 500;
+
+  if(err instanceof joi.ValidationError){
+    res.status(400).json({
+      title: "Validation Failed1",
+      message: err.message,
+      stackTrace: err.stack,
+    });
+  }
+  
   switch (statusCode) {
     case constants.VALIDATION_ERROR:
       res.json({
@@ -34,8 +45,8 @@ const errorHandler = (err, req, res, next) => {
         stackTrace: err.stack,
       });
     default:
-      console.log("No Error, All good !");
-      break;
+      // console.log("No Error, All good !");
+      res.json(err.message);
   }
 };
 

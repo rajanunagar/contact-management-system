@@ -12,7 +12,10 @@ const router = express.Router();
 router.post("/register", registerUser);
 
 router.post("/login", loginUser);
-
+router.put("/:id", (req,res)=>{
+  console.log(req.params.id);
+  res.send('hello');
+});
 router.post("/current", validateToken, currentUser);
 
 router.get("/",getAllUserr);
