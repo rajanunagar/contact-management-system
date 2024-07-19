@@ -9,9 +9,7 @@ const userValidationErro = require("../validationErro/userValidationErro");
 //@route POST /api/users/register
 //@access public
 const registerUser = asyncHandler(async (req, res) => {
-
   const { username, email, password} = req.body;
-  console.log(req.body);
   const ans = await userValidationErro.validateAsync(req.body);
   // if (!username || !email || !password) {
   //   res.status(400);
@@ -59,7 +57,7 @@ const loginUser = asyncHandler(async (req, res) => {
         user: {
           username: user.username,
           email: user.email,
-          id: user.id,
+          id: user.id,  
         },
       },
       process.env.ACCESS_TOKEN_SECRET,

@@ -3,7 +3,7 @@ const joi = require("joi");
 
 const errorHandler = (err, req, res, next) => {
   const statusCode = res.statusCode ? res.statusCode : 500;
-
+  console.log(res.statusCode);
   if(err instanceof joi.ValidationError){
     res.status(400).json({
       title: "Validation Failed1",

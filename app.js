@@ -13,6 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/contacts", require("./routes/contactRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/upload", require("./routes/fileUploadRoutes"));
 app.use(errorHandler);
 // app.use("/api/test/:age",(req,res)=>{
 //   console.log(req.query,req.params.id);
