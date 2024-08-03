@@ -6,7 +6,7 @@ const errorHandler = (err, req, res, next) => {
   console.log(res.statusCode);
   if(err instanceof joi.ValidationError){
     res.status(400).json({
-      title: "Validation Failed1",
+      title: "Validation Failed By joi",
       message: err.message,
       stackTrace: err.stack,
     });
