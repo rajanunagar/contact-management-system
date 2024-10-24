@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reset Password</title>
+    <script>
+        var status = '<%- JSON.stringify(status) %>';
+        var error = '<%- JSON.stringify(error) %>';
+        if (JSON.parse(status) == "verified" && JSON.parse(error) == "") {
+            if (confirm("You have successfully reset your password. Do you want to login?")) {
+                window.location.href = "http://localhost:3000/";
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .login-box {
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #c5ecee;
+            border: 1px solid #b2dfdb;
+            border-radius: 10px;
+            box-shadow: 4px 3px 5px gray;
+        }
+
+        .login-box h1 {
+            text-align: center;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        .user-box {
+            position: relative;
+        }
+
+        .user-box input {
+            width: calc(100% - 20px);
+            /* Adjust width to account for padding */
+            padding: 10px;
+            margin: 0 10px 20px 10px;
+            /* Add margin to left and right */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #000000;
+            box-sizing: border-box;
+            /* Ensure padding and border are included in width */
+        }
+
+        .user-box input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button[type="submit"] {
+            width: calc(100% - 20px);
+            /* Adjust width to account for padding */
+            padding: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 10px;
+            /* Add margin to left and right */
+            box-sizing: border-box;
+            /* Ensure padding and border are included in width */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: #d32f2f;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-box">
+        <h1>Reset Password For <%= email %>
+        </h1>
+        <% if (error !=="" ) { %>
+            <p class="error">Error: <%= error %>
+            </p>
+            <% } %>
+                <form action="" method="POST">
+                    <div class="user-box">
+                        <input type="password" placeholder="Password" name="password" required>
+                    </div>
+                    <div class="user-box">
+                        <input type="password" placeholder="Confirm Password" name="confirmpassword" required>
+                    </div>
+                    <button type="submit">Change Password</button>
+                </form>
+    </div>
+</body>
+
+</html>
